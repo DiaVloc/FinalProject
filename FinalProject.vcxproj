@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FinalProject.cpp" />
+    <ClCompile Include="Hotel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hotel.h" />

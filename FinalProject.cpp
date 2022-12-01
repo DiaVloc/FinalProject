@@ -1,9 +1,11 @@
 #include <iostream>
+#include "hotel.h"
 using namespace std;
 
 int main()
 {
-    int options = 0;
+    int options = 0, i = 0;
+    Hotel A[100];
     while (options != 5) {
         cout << "Hotel room booking management system" << endl;
         cout << "Menu options:" << endl;
@@ -16,7 +18,22 @@ int main()
         cin >> options;
         switch (options)
         {
-
+        case 1:
+            A[i].input();
+            A[i].print();
+            i++;
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        default:
+            cout << "Invalid input" << endl;
+            break;
         }
     }
 
