@@ -7,5 +7,5 @@ int main()
     cout << "xin chao";
     cout << "hallo";
     cout << "vgu";
-    cout << endl;
+    cout << "abc";
 }
