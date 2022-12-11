@@ -8,7 +8,7 @@ using namespace std;
 class Hotel
 {
 private:	
-	string name;
+	string name, date;
 	int id, roomnum, hour, price;
 
 public:

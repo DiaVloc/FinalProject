@@ -14,7 +14,7 @@ int main()
         cout << "3. Rooms allocated" << endl;
         cout << "4. Delete record" << endl;
         cout << "5. Exit" << endl;
-        cout << "Enter option:";
+        cout << "Enter option: ";
         cin >> options;
         switch (options)
         {
