@@ -1,0 +1,12 @@
+Name: as df
+ID number: 1234
+Date: 20/2/22
+Room number: 123
+Hours: 43
+Price: 9800000 VND
+Name: teo w
+ID number: 345
+Date: 23/4/34
+Room number: 234
+Hours: 23
+Price: 5750000 VND

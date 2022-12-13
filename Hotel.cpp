@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "hotel.h"
 
 using namespace std;
@@ -34,7 +35,7 @@ void Hotel::print()
 	cout << "Date: " << date << endl;
 	cout << "Room number: " << roomnum << endl;
 	cout << "Hours: " << hour << endl;
-	cout << "Price: " << price << endl;
+	cout << "Price: " << price << " VND" << endl;
 }
 
 void Hotel::pricecalc()
@@ -45,4 +46,17 @@ void Hotel::pricecalc()
 		price = 24 * 250000 + (hour - 24) * 200000;
 	else
 		price = 24 * 250000 + 24 * 200000 + (hour - 48) * 175000;
+}
+
+void Hotel::save()
+{
+	ofstream H;
+	H.open("Hotel.txt", ios::out | ios::app);
+	H << "Name: " << name << endl;
+	H << "ID number: " << id << endl;
+	H << "Date: " << date << endl;
+	H << "Room number: " << roomnum << endl;
+	H << "Hours: " << hour << endl;
+	H << "Price: " << price << " VND" << endl;
+	H.close();
 }

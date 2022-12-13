@@ -16,6 +16,7 @@ public:
 	void input();
 	void pricecalc();
 	void print();
+	void save();
 };
 
 

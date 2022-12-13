@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 #include "hotel.h"
 using namespace std;
 
@@ -21,10 +23,20 @@ int main()
         case 1:
             A[i].input();
             A[i].print();
+            A[i].save();
             i++;
             break;
         case 2:
+            { ifstream B;
+            B.open("Hotel.txt", ios::in);
+            string line;
+            while (!B.eof()) {
+                getline(B, line);
+                cout << line << endl;
+            }
+            B.close();
             break;
+            }
         case 3:
             break;
         case 4:
