@@ -9,7 +9,7 @@ class Hotel
 {
 private:	
 	string name, date;
-	int id, roomnum, hour, price;
+	int id, roomnum, hour, price, roomtype;
 
 public:
 	Hotel();
@@ -18,6 +18,5 @@ public:
 	void print();
 	void save();
 };
-
 
 #endif

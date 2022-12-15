@@ -11,9 +11,16 @@ Hotel::Hotel()
 	roomnum = 0;
 	hour = 0;
 	price = 0;
+	roomtype = 0;
 }
+
 void Hotel::input()
 {
+	cout << "Choose type of room: " << endl;
+	cout << "1. single" << endl << "2. double" << endl << "3. 4 people" << endl;
+	cout << "Enter option: ";
+	cin >> roomtype;
+	cout << "INFORMATION" << endl;
 	cout << "Name: ";
 	cin.ignore();
 	getline(std::cin, name);
@@ -28,6 +35,7 @@ void Hotel::input()
 	cin >> hour;
 	pricecalc();
 }
+
 void Hotel::print()
 {
 	cout << "Name: " << name << endl;

@@ -9,9 +9,9 @@ int main()
     int options = 0, i = 0;
     Hotel A[100];
     while (options != 5) {
-        cout << "Hotel room booking management system" << endl;
+        cout << "HOTEL ROOM BOOKING MANAGEMENT SYSTEM" << endl;
         cout << "Menu options:" << endl;
-        cout << "1. Book new room" << endl;
+        cout << "1. Booking new room" << endl;
         cout << "2. Booking records" << endl;
         cout << "3. Rooms allocated" << endl;
         cout << "4. Delete record" << endl;
@@ -27,7 +27,8 @@ int main()
             i++;
             break;
         case 2:
-            { ifstream B;
+            { 
+            ifstream B;
             B.open("Hotel.txt", ios::in);
             string line;
             while (!B.eof()) {
