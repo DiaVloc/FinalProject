@@ -18,14 +18,19 @@ int main()
         cout << "5. Exit" << endl;
         cout << "Enter option: ";
         cin >> options;
+        cout << endl;
         switch (options)
         {
         case 1:
-            A[i].input();
+        {A[i].input();
             A[i].print();
             A[i].save();
+            ofstream C;
+            C.open("Hotel_bin.txt", ios::out | ios::app);
+            C.write((char*)&A[i], sizeof(A[i]));
+            C.close();
             i++;
-            break;
+            break;}
         case 2:
             { 
             ifstream B;
@@ -35,11 +40,22 @@ int main()
                 getline(B, line);
                 cout << line << endl;
             }
-            B.close();
+            B.close();       
             break;
             }
         case 3:
+        {
+            ifstream B;
+            B.open("Hotel.txt", ios::in);
+            string line;
+            while (!B.eof()) {
+                B.ignore(256, '*');
+                getline(B, line);
+                cout << line << endl;
+            }
+            B.close();
             break;
+        }
         case 4:
             break;
         case 5:
