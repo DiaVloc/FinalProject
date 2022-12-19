@@ -15,8 +15,8 @@ public:
 	Hotel();
 	void input();
 	void pricecalc();
-	void print();
-	void save();
+	void print() const;
+	void save() const;
 };
 
 #endif
