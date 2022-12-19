@@ -14,3 +14,19 @@ Room number: 203
 Hours: 46
 Price: 10400000 VND
 
+Name: Thang
+ID number: 4
+Date: 4
+Room type: single 
+Room number: 4
+Hours: 4
+Price: 1000000 VND
+
+Name: Thang
+ID number: 5
+Date: 5
+Room type: double 
+Room number: 5
+Hours: 5
+Price: 1250000 VND
+

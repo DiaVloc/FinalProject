@@ -13,7 +13,8 @@ private:
 
 public:
 	Hotel();
-	void input();
+	void checkin();
+	void checkout();
 	void pricecalc();
 	void print() const;
 	void save() const;

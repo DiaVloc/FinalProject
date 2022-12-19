@@ -14,7 +14,7 @@ Hotel::Hotel()
 	roomtype = 0;
 }
 
-void Hotel::input() 
+void Hotel::checkin() 
 {
 	cout << "Choose type of room: " << endl;
 	cout << "1. single" << endl << "2. double" << endl << "3. 4 people" << endl;
@@ -35,6 +35,15 @@ void Hotel::input()
 	cin >> hour;
 	pricecalc();
 	cout << endl;
+}
+
+void Hotel::checkout()
+{
+	cout << "Full Name: ";
+	cin.ignore();
+	getline(std::cin, name);
+	cout << "ID number: ";
+	cin >> id;
 }
 
 void Hotel::print() const

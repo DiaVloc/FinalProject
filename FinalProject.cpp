@@ -7,22 +7,24 @@ using namespace std;
 int main()
 {
     int options = 0, i = 0;
-    Hotel A[100];
+    Hotel A[1000];
     while (options != 5) {
         cout << "HOTEL ROOM BOOKING MANAGEMENT SYSTEM" << endl;
         cout << "Menu options:" << endl;
-        cout << "1. Booking new room" << endl;
-        cout << "2. Booking records" << endl;
-        cout << "3. Rooms allocated" << endl;
-        cout << "4. Delete record" << endl;
-        cout << "5. Exit" << endl;
+        cout << "1. Check-In" << endl;
+        cout << "2. Check-Out" << endl;
+        cout << "3. Booking records" << endl;
+        cout << "4. Rooms allocated" << endl;
+        cout << "5. Delete record" << endl;
+        cout << "6. Exit" << endl;
         cout << "Enter option: ";
         cin >> options;
         cout << endl;
         switch (options)
         {
         case 1:
-        {A[i].input();
+        {
+            A[i].checkin();
             A[i].print();
             A[i].save();
             ofstream C;
@@ -30,8 +32,12 @@ int main()
             C.write((char*)&A[i], sizeof(A[i]));
             C.close();
             i++;
-            break;}
+            break;
+        }
         case 2:
+            A[i].checkout();
+            break;
+        case 3:
             { 
             ifstream B;
             B.open("Hotel.txt", ios::in);
@@ -43,7 +49,7 @@ int main()
             B.close();       
             break;
             }
-        case 3:
+        case 4:
         {
             ifstream B;
             B.open("Hotel.txt", ios::in);
@@ -56,9 +62,9 @@ int main()
             B.close();
             break;
         }
-        case 4:
-            break;
         case 5:
+            break;
+        case 6:
             break;
         default:
             cout << "Invalid input" << endl;
