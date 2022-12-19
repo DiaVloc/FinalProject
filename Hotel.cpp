@@ -21,7 +21,7 @@ void Hotel::input()
 	cout << "Enter option: ";
 	cin >> roomtype;
 	cout << "INFORMATION" << endl;
-	cout << "Name: ";
+	cout << "Full Name: ";
 	cin.ignore();
 	getline(std::cin, name);
 	cout << "ID number: ";
