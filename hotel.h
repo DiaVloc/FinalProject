@@ -15,9 +15,11 @@ public:
 	Hotel();
 	void checkin();
 	void checkout();
+	void display();
 	void pricecalc();
 	void print() const;
 	void save() const;
+	void rooms();
 };
 
 #endif

@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    int options = 0, i = 0;
+    int options = 0;
     Hotel A;
     while (options != 6) {
         cout << "HOTEL ROOM BOOKING MANAGEMENT SYSTEM" << endl;
@@ -25,13 +25,7 @@ int main()
         case 1:
         {
             A.checkin();
-            A.print();
-            A.save();
-            //ofstream C;
-            //C.open("Hotel_bin.txt", ios::out | ios::app);
-            //C.write((char*)&A[i], sizeof(A[i]));
-            //C.close();
-            i++;
+            A.print();                 
             break;
         }
         case 2:
@@ -41,27 +35,12 @@ int main()
         }
         case 3:
         {
-            ifstream B;
-            B.open("Hotel.txt", ios::in);
-            string line;
-            while (!B.eof()) {
-                getline(B, line);
-                cout << line << endl;
-            }
-            B.close();       
+            A.display();
             break;
         }
         case 4:
         {
-            ifstream B;
-            B.open("Hotel.txt", ios::in);
-            string line;
-            while (!B.eof()) {
-                B.ignore(256, '*');
-                getline(B, line);
-                cout << line << endl;
-            }
-            B.close();
+            A.rooms();
             break;
         }
         case 5:

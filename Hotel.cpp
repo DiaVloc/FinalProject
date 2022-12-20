@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <conio.h>
 #include "hotel.h"
 
 using namespace std;
@@ -32,11 +33,28 @@ void Hotel::checkin()
 	cout << "Date: ";
 	cin.ignore();
 	getline(std::cin, date);
+	cout << "List of rooms: " << endl;
+	switch (roomtype)
+	{
+	case 1:
+		cout << "single: 1 - 20" << endl;
+		break;
+	case 2:
+		cout << "double: 21 - 40 " << endl;
+		break;
+	default:
+		cout << "4 people: 41 - 60 " << endl;
+		break;
+	}
 	cout << "Room number: ";
 	cin >> roomnum;
 	cout << "Rent hours: ";
 	cin >> hour;
 	pricecalc();
+	save();
+	cout << endl;
+	cout << "Press any key to continue" << endl;
+	_getch();
 	cout << endl;
 }
 
@@ -53,6 +71,7 @@ void Hotel::print() const
 {
 	cout << "Name: " << name << endl;
 	cout << "ID number: " << id << endl;
+	cout << "Phone number: " << phonenum << endl;
 	cout << "Date: " << date << endl;
 	cout << "Room type: ";
 	switch (roomtype)
@@ -66,10 +85,14 @@ void Hotel::print() const
 	default:
 		cout << "4 people " << endl;
 		break;
-	}
+	}	
 	cout << "Room number: " << roomnum << endl;
 	cout << "Hours: " << hour << endl;
 	cout << "Price: " << price << " VND" << endl << endl;
+	cout << endl;
+	cout << "Press any key to continue" << endl;
+	_getch();
+	cout << endl;
 }
 
 void Hotel::pricecalc() 
@@ -86,7 +109,7 @@ void Hotel::save() const
 {
 	ofstream H;
 	H.open("Hotel.txt", ios::out | ios::app);
-	H << "Name: " << name << endl;
+	/*H << "Name: " << name << endl;
 	H << "ID number: " << id << endl;
 	H << "Date: " << date << endl;
 	H << "Room type: ";
@@ -104,7 +127,60 @@ void Hotel::save() const
 	}
 	H << "Room number: " << roomnum << endl;
 	H << "Hours: " << hour << endl;
-	H << "Price: " << price << " VND" << endl << endl;
+	H << "Price: " << price << " VND" << endl << endl;*/
+	H.write((char*)this, sizeof(Hotel));
 	H.close();
 }
+
+void Hotel::display()
+{
+	ifstream B;
+	B.open("Hotel.txt", ios::in);
+	
+	while (!B.eof()) {
+		B.read((char*)this, sizeof(Hotel));
+		cout << "Name: " << name << endl;
+		cout << "ID number: " << id << endl;
+		cout << "Date: " << date << endl;
+		cout << "Room type: ";
+		switch (roomtype)
+		{
+		case 1:
+			cout << "single " << endl;
+			break;
+		case 2:
+			cout << "double " << endl;
+			break;
+		default:
+			cout << "4 people " << endl;
+			break;
+		}
+		cout << "Room number: " << roomnum << endl;
+		cout << "Hours: " << hour << endl;
+		cout << "Price: " << price << " VND" << endl << endl;
+	}
+	cout << endl;
+	cout << "Press any key to continue" << endl;
+	_getch();
+	cout << endl;
+	B.close();
+}
+
+void Hotel::rooms()
+{
+	cout << "List of rooms allocated:" << endl;
+	ifstream B;
+	B.open("Hotel.txt", ios::in);
+
+	while (!B.eof()) {
+		B.read((char*)this, sizeof(Hotel));
+		cout << roomnum << " , ";
+	}
+	cout << endl;
+	cout << "Press any key to continue" << endl;
+	_getch();
+	cout << endl;
+	B.close();
+}
+
 
