@@ -109,25 +109,6 @@ void Hotel::save() const
 {
 	ofstream H;
 	H.open("Hotel.txt", ios::out | ios::app);
-	/*H << "Name: " << name << endl;
-	H << "ID number: " << id << endl;
-	H << "Date: " << date << endl;
-	H << "Room type: ";
-	switch (roomtype)
-	{
-	case 1:
-		H << "single " << endl;
-		break;
-	case 2:
-		H << "double " << endl;
-		break;
-	default:
-		H << "4 people " << endl;
-		break;
-	}
-	H << "Room number: " << roomnum << endl;
-	H << "Hours: " << hour << endl;
-	H << "Price: " << price << " VND" << endl << endl;*/
 	H.write((char*)this, sizeof(Hotel));
 	H.close();
 }
