@@ -9,7 +9,7 @@ class Hotel
 {
 private:	
 	string name, date;
-	int id, roomnum, hour, price, roomtype;
+	int id, roomnum, hour, price, roomtype, phonenum;
 
 public:
 	Hotel();

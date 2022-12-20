@@ -7,8 +7,8 @@ using namespace std;
 int main()
 {
     int options = 0, i = 0;
-    Hotel A[1000];
-    while (options != 5) {
+    Hotel A;
+    while (options != 6) {
         cout << "HOTEL ROOM BOOKING MANAGEMENT SYSTEM" << endl;
         cout << "Menu options:" << endl;
         cout << "1. Check-In" << endl;
@@ -24,21 +24,23 @@ int main()
         {
         case 1:
         {
-            A[i].checkin();
-            A[i].print();
-            A[i].save();
-            ofstream C;
-            C.open("Hotel_bin.txt", ios::out | ios::app);
-            C.write((char*)&A[i], sizeof(A[i]));
-            C.close();
+            A.checkin();
+            A.print();
+            A.save();
+            //ofstream C;
+            //C.open("Hotel_bin.txt", ios::out | ios::app);
+            //C.write((char*)&A[i], sizeof(A[i]));
+            //C.close();
             i++;
             break;
         }
         case 2:
-            A[i].checkout();
+        {
+            A.checkout();
             break;
+        }
         case 3:
-            { 
+        {
             ifstream B;
             B.open("Hotel.txt", ios::in);
             string line;
@@ -48,7 +50,7 @@ int main()
             }
             B.close();       
             break;
-            }
+        }
         case 4:
         {
             ifstream B;

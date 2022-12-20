@@ -12,6 +12,7 @@ Hotel::Hotel()
 	hour = 0;
 	price = 0;
 	roomtype = 0;
+	phonenum = 0;
 }
 
 void Hotel::checkin() 
@@ -26,12 +27,14 @@ void Hotel::checkin()
 	getline(std::cin, name);
 	cout << "ID number: ";
 	cin >> id;
+	cout << "Phone number: ";
+	cin >> phonenum;
 	cout << "Date: ";
 	cin.ignore();
 	getline(std::cin, date);
 	cout << "Room number: ";
 	cin >> roomnum;
-	cout << "Hours: ";
+	cout << "Rent hours: ";
 	cin >> hour;
 	pricecalc();
 	cout << endl;

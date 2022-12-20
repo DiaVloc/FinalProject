@@ -1,32 +1,48 @@
-Name: etiadn
-ID number: 1235
-Date: 12/1/23
-Room type: double 
-Room number: 123
-Hours: 24
-Price: 6000000 VND
-
-Name: tei as
-ID number: 3456789
-Date: 30/1/23
-Room type: 4 people 
-Room number: 203
-Hours: 46
-Price: 10400000 VND
-
-Name: Thang
-ID number: 4
-Date: 4
+Name: thang
+ID number: 1
+Date: 1
 Room type: single 
-Room number: 4
-Hours: 4
-Price: 1000000 VND
+Room number: 1
+Hours: 1
+Price: 250000 VND
 
 Name: Thang
+ID number: 2
+Date: 2
+Room type: single 
+Room number: 2
+Hours: 2
+Price: 500000 VND
+
+Name: Dinh
 ID number: 5
 Date: 5
 Room type: double 
 Room number: 5
 Hours: 5
 Price: 1250000 VND
+
+Name: Thang
+ID number: 10
+Date: 10/10
+Room type: single 
+Room number: 20
+Hours: 24
+Price: 6000000 VND
+
+Name: T
+ID number: 5
+Date: 4
+Room type: single 
+Room number: 56
+Hours: 5
+Price: 1250000 VND
+
+Name: G
+ID number: 3
+Date: 3
+Room type: 4 people 
+Room number: 3
+Hours: 3
+Price: 750000 VND
 
