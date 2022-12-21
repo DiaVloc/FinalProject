@@ -14,14 +14,14 @@ private:
 public:
 	Hotel();
 	void checkin();	
-	void display();
+	void record();
 	void pricecalc();
 	void print();
 	void save();
-	void rooms();
+	void allocate();
 	//void modify();
 	//void delete_rec();
-	bool check(int& r);
+	int check(int& r);
 };
 
 #endif

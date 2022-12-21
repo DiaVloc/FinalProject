@@ -20,7 +20,7 @@ Hotel::Hotel()
 
 void Hotel::checkin() 
 {
-	int r;
+	int r, booking;
 	cout << "Choose type of room: " << endl;
 	cout << "1. single" << endl << "2. double" << endl << "3. 4 people" << endl;
 	cout << "Enter option: ";
@@ -51,6 +51,7 @@ void Hotel::checkin()
 	}
 	cout << "Room number: ";
 	cin >> r;
+	booking = check(r);
 	/*while (check(r) == 1)
 	{
 		cout << "Sorry, room has been booked." << endl;
@@ -58,6 +59,14 @@ void Hotel::checkin()
 		cout << "Room number: ";
 		cin >> r;
 	}*/
+	if (booking)
+	{
+		cout << "Sorry!";
+	}
+	else
+	{
+
+	
 	roomnum = r;
 	cout << "Rent hours: ";
 	cin >> hour;
@@ -67,6 +76,7 @@ void Hotel::checkin()
 	cout << "Press any key to continue" << endl;
 	_getch();
 	cout << endl;
+	}
 }
 
 
@@ -117,12 +127,12 @@ void Hotel::save()
 	H.close();
 }
 
-void Hotel::display()
+void Hotel::record()
 {
 	ifstream B;
 	B.open("Hotel.txt", ios::in);
 	cout << "Customer records:" << endl << endl;
-	cout << "Room no.\tName\t\tID number\tPhone number\tDate\t\tRoom type\tHours\tPrice\n\n";
+	cout << "Room no.\tName\t\tID number\tPhone number\tDate\t\tRoom type\tHours\tPrice\n";
 	while (!B.eof()) {
 		B.read((char*)this, sizeof(Hotel));
 		/*cout << "Name: " << name << endl;
@@ -158,7 +168,7 @@ void Hotel::display()
 	B.close();
 }
 
-void Hotel::rooms()
+void Hotel::allocate()
 {
 	cout << "List of rooms allocated:" << endl;
 	cout << "Room\t\tName\n\n";
@@ -177,8 +187,9 @@ void Hotel::rooms()
 	B.close();
 }
 
-bool Hotel::check(int& r)
+int Hotel::check(int& r)
 {
+	int flag = 0;
 	ifstream fin("Hotel.txt", ios::in);
 
 	while (!fin.eof())
@@ -186,12 +197,12 @@ bool Hotel::check(int& r)
 		fin.read((char*)this, sizeof(Hotel));
 		if (roomnum == r)
 		{
-			return true;
+			flag = 1;
 			break;
 		}
 	}
 	fin.close();
-	return false;
+	return (flag);
 
 }
 

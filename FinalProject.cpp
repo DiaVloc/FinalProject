@@ -30,12 +30,12 @@ int main()
         }
         case 2:
         {
-            A.display();
+            A.record();
             break;
         }
         case 3:
         {
-            A.rooms();
+            A.allocate();
             break;
         }
         case 4:
