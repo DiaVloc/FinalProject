@@ -12,9 +12,9 @@ int main()
         cout << "HOTEL ROOM BOOKING MANAGEMENT SYSTEM" << endl;
         cout << "Menu options:" << endl;
         cout << "1. Check-In" << endl;
-        cout << "2. Check-Out" << endl;
-        cout << "3. Booking records" << endl;
-        cout << "4. Rooms allocated" << endl;
+        cout << "2. Customer records" << endl;
+        cout << "3. Rooms allocate" << endl;
+        cout << "4. Modify record" << endl;
         cout << "5. Delete record" << endl;
         cout << "6. Exit" << endl;
         cout << "Enter option: ";
@@ -30,20 +30,21 @@ int main()
         }
         case 2:
         {
-            A.checkout();
+            A.display();
             break;
         }
         case 3:
         {
-            A.display();
+            A.rooms();
             break;
         }
         case 4:
         {
-            A.rooms();
+            //A.modify();
             break;
         }
         case 5:
+            //A.delete_rec();
             break;
         case 6:
             break;

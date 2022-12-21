@@ -13,13 +13,15 @@ private:
 
 public:
 	Hotel();
-	void checkin();
-	void checkout();
+	void checkin();	
 	void display();
 	void pricecalc();
-	void print() const;
-	void save() const;
+	void print();
+	void save();
 	void rooms();
+	//void modify();
+	//void delete_rec();
+	bool check(int& r);
 };
 
 #endif
