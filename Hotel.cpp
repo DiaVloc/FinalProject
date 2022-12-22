@@ -52,7 +52,7 @@ void Hotel::checkin()
 	}
 	cout << "Room number: ";
 	cin >> r;
-	booking = check(r);
+	//booking = check(r);
 	/*while (check(r) == 1)
 	{
 		cout << "Sorry, room has been booked." << endl;
@@ -60,12 +60,12 @@ void Hotel::checkin()
 		cout << "Room number: ";
 		cin >> r;
 	}*/
-	if (booking)
+	/*if (booking)
 	{
 		cout << "This room has been booked. Please choose another room." << endl;
 	}
 	else
-	{
+	{*/
 	roomnum = r;
 	cout << "Rent hours: ";
 	cin >> hour;
@@ -73,10 +73,11 @@ void Hotel::checkin()
 	//save();
 	A.write((char*)this, sizeof(Hotel));
 	cout << endl;
-	cout << "Press any key to continue" << endl;
+	cout << "Room is booked" << endl;
+	cout << "Press any key to continue" << endl << endl;
 	_getch();
 	A.close();
-	}
+	//}
 }
 
 
@@ -130,21 +131,38 @@ void Hotel::pricecalc()
 void Hotel::record()
 {
 	ifstream B("Hotel.txt", ios::in);
-	int r, record;
+	int r, record = 0;
 	cout << "CUSTOMER RECORDS" << endl << endl;
 	cout << "Enter Room No.";
 	cin >> r;
+	cout << endl;
 	while (!B.eof()) 
 	{
 		B.read((char*)this, sizeof(Hotel));
 		if (roomnum == r) 
 		{
-			cout << "Room no.: " << roomnum;
+			cout << "CUSTOMER DETAIL: " << endl << endl;
+			cout << "Room no.: " << roomnum << endl;
 			cout << "Name: " << name << endl;
 			cout << "ID number: " << id << endl;
 			cout << "Phone number: " << phonenum << endl;
 			cout << "Date: " << date << endl;
 			cout << "Room type: ";
+			switch (roomtype)
+			{
+			case 1:
+				cout << "single" << endl;
+				break;
+			case 2:
+				cout << "double" << endl;
+				break;
+			default:
+				cout << "4 people" << endl;
+				break;
+			}			
+			cout << "Hours: " << hour << endl;
+			cout << "Price: " << price << " VND" << endl << endl;
+			cout << "Press any key to continue" << endl << endl;
 			record = 1;
 			break;
 		}
@@ -152,22 +170,41 @@ void Hotel::record()
 		
 	}
 	if(record == 0)
-		cout << "Room not found! Press any key to continue" << endl;
+		cout << "Room not found! Press any key to continue" << endl << endl;
 	_getch();
 	B.close();
 }
 
 void Hotel::allocate()
 {
+	ifstream B("Hotel.txt", ios::in);
 	cout << "List of rooms allocated:" << endl;
-	cout << "Room\t\tName\n\n";
-	ifstream B;
-	B.open("Hotel.txt", ios::in);
-
+	cout << "Room no.\tName\t\tID number\tPhone number\tDate\t\tRoom type\tHours\tPrice\n\n";
 	while (!B.eof()) {
 		B.read((char*)this, sizeof(Hotel));
-		cout << roomnum << "\t\t" << name << "\n\n";
-
+		/*cout << "Name: " << name << endl;
+		cout << "ID number: " << id << endl;
+		cout << "Phone number: " << phonenum << endl;
+		cout << "Date: " << date << endl;
+		cout << "Room type: ";*/
+		cout << roomnum << "\t\t" << name << "\t\t" << id << "\t\t" << phonenum << "\t\t" << date << "\t\t";
+		switch (roomtype)
+		{
+		case 1:
+			cout << "single\t\t";
+			break;
+		case 2:
+			cout << "double\t\t";
+			break;
+		default:
+			cout << "4 people\t\t";
+			break;
+		}
+		cout << hour << "\t" << price << " VND\n";
+		/*cout << "Room number: " << roomnum << endl;
+		cout << "Hours: " << hour << endl;
+		cout << "Price: " << price << " VND" << endl << endl;*/
+		cout << endl;
 	}
 	cout << endl;
 	cout << "Press any key to continue" << endl;
@@ -192,6 +229,59 @@ int Hotel::check(int& r)
 	}
 	fin.close();
 	return (flag);
+
+}
+
+void Hotel::modify()
+{
+
+	long pos, flag = 0;
+	int r;
+
+	fstream file("Hotel.txt", ios::in | ios::out | ios::binary);
+	cout << "Enter Room No.";
+	cin >> r;
+	cout << endl;
+
+	while (!file.eof())
+	{
+
+		pos = file.tellg();
+		file.read((char*)this, sizeof(Hotel));
+
+		if (roomnum == r)
+		{
+
+			cout << "Enter New Details" << endl;
+			cout << "-----------------" << endl;
+			cout << "Full Name: ";
+			cin.ignore();
+			getline(std::cin, name);
+			cout << "ID number: ";
+			cin >> id;
+			cout << "Phone no: ";
+			cin >> phonenum;
+			cout << "Date: ";
+			cin.ignore();
+			getline(std::cin, date);
+			cout << "Rent hours: ";
+			cin >> hour;
+			pricecalc();
+			file.seekg(pos);
+			file.write((char*)this, sizeof(Hotel));
+			cout << "\n Record is modified....!!" << endl << endl;
+			cout << "Press any key to continue" << endl << endl;
+			flag = 1;
+			break;
+
+		}
+
+	}
+
+	if (flag == 0)
+		cout << "Room not found! Press any key to continue" << endl << endl;
+	_getch();
+	file.close();
 
 }
 

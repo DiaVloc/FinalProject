@@ -40,7 +40,7 @@ int main()
         }
         case 4:
         {
-            //A.modify();
+            A.modify();
             break;
         }
         case 5:

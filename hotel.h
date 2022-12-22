@@ -19,8 +19,8 @@ public:
 	void print();
 	void save();
 	void allocate();
-	//void modify();
-	//void delete_rec();
+	void modify();
+	void delete_rec();
 	int check(int& r);
 };
 
