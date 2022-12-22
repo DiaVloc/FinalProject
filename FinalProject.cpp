@@ -49,7 +49,7 @@ int main()
         case 6:
             break;
         default:
-            cout << "Invalid input" << endl;
+            cout << "Invalid input! Please choose your option again." << endl;
             break;
         }
     }
