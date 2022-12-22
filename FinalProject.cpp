@@ -13,7 +13,7 @@ int main()
         cout << "Menu options:" << endl;
         cout << "1. Check-In" << endl;
         cout << "2. Customer records" << endl;
-        cout << "3. Rooms allocate" << endl;
+        cout << "3. Rooms allocated" << endl;
         cout << "4. Modify record" << endl;
         cout << "5. Delete record" << endl;
         cout << "6. Exit" << endl;

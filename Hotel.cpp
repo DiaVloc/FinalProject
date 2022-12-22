@@ -30,6 +30,7 @@ void Hotel::checkin()
 	cout << "Full Name: ";
 	cin.ignore();
 	getline(std::cin, name);
+	//cin >> name;
 	cout << "ID number: ";
 	cin >> id;
 	cout << "Phone number: ";
@@ -37,6 +38,7 @@ void Hotel::checkin()
 	cout << "Date: ";
 	cin.ignore();
 	getline(std::cin, date);
+	//cin >> date;
 	cout << "List of rooms: " << endl;
 	switch (roomtype)
 	{
@@ -180,31 +182,28 @@ void Hotel::allocate()
 	ifstream B("Hotel.txt", ios::in);
 	cout << "List of rooms allocated:" << endl;
 	cout << "Room no.\tName\t\tID number\tPhone number\tDate\t\tRoom type\tHours\tPrice\n\n";
+	
 	while (!B.eof()) {
-		B.read((char*)this, sizeof(Hotel));
-		/*cout << "Name: " << name << endl;
-		cout << "ID number: " << id << endl;
-		cout << "Phone number: " << phonenum << endl;
-		cout << "Date: " << date << endl;
-		cout << "Room type: ";*/
-		cout << roomnum << "\t\t" << name << "\t\t" << id << "\t\t" << phonenum << "\t\t" << date << "\t\t";
-		switch (roomtype)
-		{
-		case 1:
-			cout << "single\t\t";
-			break;
-		case 2:
-			cout << "double\t\t";
-			break;
-		default:
-			cout << "4 people\t\t";
-			break;
-		}
-		cout << hour << "\t" << price << " VND\n";
-		/*cout << "Room number: " << roomnum << endl;
-		cout << "Hours: " << hour << endl;
-		cout << "Price: " << price << " VND" << endl << endl;*/
-		cout << endl;
+		
+			B.read((char*)this, sizeof(Hotel));
+
+			cout << roomnum << "\t\t" << name << "\t\t" << id << "\t\t" << phonenum << "\t\t" << date << "\t\t";
+			switch (roomtype)
+			{
+			case 1:
+				cout << "single\t\t";
+				break;
+			case 2:
+				cout << "double\t\t";
+				break;
+			default:
+				cout << "4 people\t\t";
+				break;
+			}
+			cout << hour << "\t" << price << " VND\n";
+
+			cout << endl;
+			B.peek();
 	}
 	cout << endl;
 	cout << "Press any key to continue" << endl;
@@ -238,7 +237,7 @@ void Hotel::modify()
 	long pos, flag = 0;
 	int r;
 
-	fstream file("Hotel.txt", ios::in | ios::out | ios::binary);
+	fstream file("Hotel.txt", ios::in | ios::out );
 	cout << "Enter Room No.";
 	cin >> r;
 	cout << endl;
@@ -257,6 +256,7 @@ void Hotel::modify()
 			cout << "Full Name: ";
 			cin.ignore();
 			getline(std::cin, name);
+			//cin >> name;
 			cout << "ID number: ";
 			cin >> id;
 			cout << "Phone no: ";
@@ -264,6 +264,7 @@ void Hotel::modify()
 			cout << "Date: ";
 			cin.ignore();
 			getline(std::cin, date);
+			//cin >> date;
 			cout << "Rent hours: ";
 			cin >> hour;
 			pricecalc();
