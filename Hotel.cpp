@@ -27,6 +27,12 @@ void Hotel::checkin()
 	cout << "1. single" << endl << "2. double" << endl << "3. 4 people" << endl;
 	cout << "Enter option: ";
 	cin >> roomtype;
+	while ((roomtype > 3) || (roomtype < 1))
+	{
+		cout << "Invalid input" << endl;
+		cout << "Enter option: ";
+		cin >> roomtype;
+	}
 	cout << "INFORMATION" << endl;
 	if (roomtype == 1)
 	{
@@ -40,16 +46,7 @@ void Hotel::checkin()
 	{
 		cout << "Room type: 4 people" << endl;
 	}
-	cout << "Full Name: ";
-	cin.ignore();
-	getline(std::cin, name);
-	cout << "ID number: ";
-	cin >> id;
-	cout << "Phone number: ";
-	cin >> phonenum;
-	cout << "Date: ";
-	cin.ignore();
-	getline(std::cin, date);
+	
 	cout << "List of rooms: " << endl;
 	switch (roomtype)
 	{
@@ -80,6 +77,16 @@ void Hotel::checkin()
 	else
 	{*/
 	roomnum = r;
+	cout << "Full Name: ";
+	cin.ignore();
+	getline(std::cin, name);
+	cout << "ID number: ";
+	cin >> id;
+	cout << "Phone number: ";
+	cin >> phonenum;
+	cout << "Date: ";
+	cin.ignore();
+	getline(std::cin, date);
 	cout << "Rent hours: ";
 	cin >> hour;
 	pricecalc();
@@ -95,8 +102,9 @@ void Hotel::checkin()
 
 void Hotel::print() 
 {
-	system("cls");
-	cout << "Bill of customer: " << endl;
+	
+	
+	cout << "Room number: " << roomnum << endl;
 	cout << "Name: " << name << endl;
 	cout << "ID number: " << id << endl;
 	cout << "Phone number: " << phonenum << endl;
@@ -114,13 +122,10 @@ void Hotel::print()
 		cout << "4 people " << endl;
 		break;
 	}	
-	cout << "Room number: " << roomnum << endl;
+	
 	cout << "Hours: " << hour << endl;
 	cout << "Price: " << price << " VND" << endl << endl;
-	cout << endl;
-	cout << "Press any key to continue" << endl;
-	_getch();
-	cout << endl;
+	
 }
 
 void Hotel::pricecalc() 
@@ -133,13 +138,6 @@ void Hotel::pricecalc()
 		price = 24 * 250000 + 24 * 200000 + (hour - 48) * 175000;
 }
 
-/*void Hotel::save()
-{
-	ofstream H;
-	H.open("Hotel.txt", ios::out | ios::app);
-	H.write((char*)this, sizeof(Hotel));
-	H.close();
-}*/
 
 void Hotel::record()
 {
@@ -155,27 +153,8 @@ void Hotel::record()
 		B.read((char*)this, sizeof(Hotel));
 		if (roomnum == r) 
 		{
-			cout << "CUSTOMER DETAIL: " << endl << endl;
-			cout << "Room no.: " << roomnum << endl;
-			cout << "Name: " << name << endl;
-			cout << "ID number: " << id << endl;
-			cout << "Phone number: " << phonenum << endl;
-			cout << "Date: " << date << endl;
-			cout << "Room type: ";
-			switch (roomtype)
-			{
-			case 1:
-				cout << "single" << endl;
-				break;
-			case 2:
-				cout << "double" << endl;
-				break;
-			default:
-				cout << "4 people" << endl;
-				break;
-			}			
-			cout << "Hours: " << hour << endl;
-			cout << "Price: " << price << " VND" << endl << endl;
+			cout << "CUSTOMER DETAIL: " << endl << endl;			
+			print();
 			cout << "Press any key to continue" << endl << endl;
 			record = 1;
 			break;
@@ -239,6 +218,7 @@ int Hotel::check(int& r)
 			flag = 1;
 			break;
 		}
+		fin.peek();
 	}
 	fin.close();
 	return (flag);
@@ -319,27 +299,8 @@ void Hotel::delete_rec()
 
 		{
 
-			cout << "CUSTOMER DETAIL: " << endl << endl;
-			cout << "Room no.: " << roomnum << endl;
-			cout << "Name: " << name << endl;
-			cout << "ID number: " << id << endl;
-			cout << "Phone number: " << phonenum << endl;
-			cout << "Date: " << date << endl;
-			cout << "Room type: ";
-			switch (roomtype)
-			{
-			case 1:
-				cout << "single" << endl;
-				break;
-			case 2:
-				cout << "double" << endl;
-				break;
-			default:
-				cout << "4 people" << endl;
-				break;
-			}
-			cout << "Hours: " << hour << endl;
-			cout << "Price: " << price << " VND" << endl << endl;
+			cout << "CUSTOMER DETAIL: " << endl << endl;		
+			print();
 			
 			cout << "Do you want to delete this record(y/n): ";
 			cin >> ch;
@@ -360,7 +321,7 @@ void Hotel::delete_rec()
 
 		else
 			fout.write((char*)this, sizeof(Hotel));
-
+		fin.peek();
 	}
 
 	fin.close();

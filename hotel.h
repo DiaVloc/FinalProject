@@ -16,8 +16,7 @@ public:
 	void checkin();	
 	void record();
 	void pricecalc();
-	void print();
-	void save();
+	void print();	
 	void allocate();
 	void modify();
 	void delete_rec();

@@ -26,8 +26,7 @@ int main()
         {
         case 1:
         {
-            A.checkin();
-            A.print();                 
+            A.checkin();                        
             break;
         }
         case 2:
