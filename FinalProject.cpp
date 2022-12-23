@@ -9,6 +9,8 @@ int main()
     int options = 0;
     Hotel A;
     while (options != 6) {
+        
+        system("cls");
         cout << "HOTEL ROOM BOOKING MANAGEMENT SYSTEM" << endl;
         cout << "Menu options:" << endl;
         cout << "1. Check-In" << endl;
