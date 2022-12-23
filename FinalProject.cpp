@@ -44,7 +44,7 @@ int main()
             break;
         }
         case 5:
-            //A.delete_rec();
+            A.delete_rec();
             break;
         case 6:
             break;

@@ -286,4 +286,85 @@ void Hotel::modify()
 
 }
 
+void Hotel::delete_rec()
+{
+
+	int r, flag = 0;
+	char ch;
+	ifstream fin("Hotel.txt", ios::in);
+	ofstream fout("temp.txt", ios::out);
+
+	cout << "Enter Room No.";
+	cin >> r;
+	cout << endl;
+
+	while (!fin.eof())
+	{
+
+		fin.read((char*)this, sizeof(Hotel));
+		if (roomnum == r)
+
+		{
+
+			cout << "CUSTOMER DETAIL: " << endl << endl;
+			cout << "Room no.: " << roomnum << endl;
+			cout << "Name: " << name << endl;
+			cout << "ID number: " << id << endl;
+			cout << "Phone number: " << phonenum << endl;
+			cout << "Date: " << date << endl;
+			cout << "Room type: ";
+			switch (roomtype)
+			{
+			case 1:
+				cout << "single" << endl;
+				break;
+			case 2:
+				cout << "double" << endl;
+				break;
+			default:
+				cout << "4 people" << endl;
+				break;
+			}
+			cout << "Hours: " << hour << endl;
+			cout << "Price: " << price << " VND" << endl << endl;
+			
+			cout << "Do you want to delete this record(y/n): ";
+			cin >> ch;
+
+			do {
+				if (ch == 'n')
+					fout.write((char*)this, sizeof(Hotel));
+				else if (ch == 'y')
+					cout << "Room no. deleted" << endl;
+				else {
+					cout << "Invalid input" << endl;
+					cout << "Do you want to delete this record(y/n): ";
+					cin >> ch;
+				}
+			} while ((ch != 'n') || (ch != 'y'));
+
+			flag = 1;
+
+		}
+
+		else
+			fout.write((char*)this, sizeof(Hotel));
+
+	}
+
+	fin.close();
+	fout.close();
+
+	if (flag == 0)
+		cout << "Room not found! Press any key to continue" << endl;
+
+	
+
+	remove("Hotel.txt");
+	rename("temp.txt", "Hotel.txt");
+
+	_getch();
+
+}
+
 
