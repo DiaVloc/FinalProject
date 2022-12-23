@@ -312,6 +312,7 @@ void Hotel::delete_rec()
 				else if (ch == 'y')
 					cout << "Room deleted successfully! Press any key to continue" << endl;
 				else {
+				fout.write((char*)this, sizeof(Hotel));
 				cout << "Invalid input" << endl;
 				cout << "Room deleted unsuccessfully! Press any key to continue" << endl;
 			}
