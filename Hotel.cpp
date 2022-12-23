@@ -20,6 +20,7 @@ Hotel::Hotel()
 
 void Hotel::checkin() 
 {
+	system("cls");
 	int r, booking;
 	ofstream A("Hotel.txt", ios::app);
 	cout << "Choose type of room: " << endl;
@@ -27,6 +28,18 @@ void Hotel::checkin()
 	cout << "Enter option: ";
 	cin >> roomtype;
 	cout << "INFORMATION" << endl;
+	if (roomtype == 1)
+	{
+		cout << "Room type: Single" << endl;
+	}
+	else if (roomtype == 2)
+	{
+		cout << "Room type: Double" << endl;
+	}
+	else if (roomtype == 3)
+	{
+		cout << "Room type: 4 people" << endl;
+	}
 	cout << "Full Name: ";
 	cin.ignore();
 	getline(std::cin, name);
@@ -55,13 +68,13 @@ void Hotel::checkin()
 	cout << "Room number: ";
 	cin >> r;
 	//booking = check(r);
-	/*while (check(r) == 1)
+	while (check(r) == 1)
 	{
 		cout << "Sorry, room has been booked." << endl;
 		cout << "Please choose another room." << endl;
 		cout << "Room number: ";
 		cin >> r;
-	}*/
+	}
 	/*if (booking)
 	{
 		cout << "This room has been booked. Please choose another room." << endl;
@@ -72,7 +85,6 @@ void Hotel::checkin()
 	cout << "Rent hours: ";
 	cin >> hour;
 	pricecalc();
-	//save();
 	A.write((char*)this, sizeof(Hotel));
 	cout << endl;
 	cout << "Room is booked" << endl;
@@ -85,6 +97,7 @@ void Hotel::checkin()
 
 void Hotel::print() 
 {
+	system("cls");
 	cout << "Bill of customer: " << endl;
 	cout << "Name: " << name << endl;
 	cout << "ID number: " << id << endl;
