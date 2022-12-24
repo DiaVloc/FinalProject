@@ -66,6 +66,12 @@ void Hotel::checkin()
 	cout << "Room number: ";
 	cin >> r;
 	
+	while ((r > 60) || (r < 1))
+	{
+		cout << "Invalid input" << endl;
+		cout << "Room number: ";
+		cin >> r;
+	}
 	while (check(r) == 1)
 	{
 		cout << "Sorry, room has been booked." << endl;
@@ -75,6 +81,12 @@ void Hotel::checkin()
 	}
 	
 	roomnum = r;
+	if (roomnum <= 20)
+		roomtype = 1;
+	else if (roomnum <= 40)
+		roomtype = 2;
+	else
+		roomtype = 3;
 	cout << "Full Name: ";
 	cin.ignore();
 	getline(std::cin, name);
@@ -107,8 +119,8 @@ void Hotel::print()
 	cout << "ID number: " << id << endl;
 	cout << "Phone number: " << phonenum << endl;
 	cout << "Date: " << date << endl;
-	//cout << "Room type: ";
-	/*switch (roomtype)
+	cout << "Room type: ";
+	switch (roomtype)
 	{
 	case 1:
 		cout << "single " << endl;
@@ -119,7 +131,7 @@ void Hotel::print()
 	default:
 		cout << "4 people " << endl;
 		break;
-	}	*/
+	}	
 	
 	cout << "Hours: " << hour << endl;
 	cout << "Price: " << price << " VND" << endl << endl;
@@ -171,14 +183,14 @@ void Hotel::allocate()
 	system("cls");
 	ifstream B("Hotel.txt", ios::in);
 	cout << "List of rooms allocated:" << endl;
-	cout << "Room no.\tName\t\tID number\tPhone number\tDate\t\tHours\tPrice\n\n";
+	cout << "Room no.\tName\t\tID number\tPhone number\tDate\t\tRoomtype\tHours\t\tPrice\n\n";
 	
 	while (!B.eof()) {
 		
 			B.read((char*)this, sizeof(Hotel));
 
 			cout << roomnum << "\t\t" << name << "\t\t" << id << "\t\t" << phonenum << "\t\t" << date << "\t\t";
-			/*switch (roomtype)
+			switch (roomtype)
 			{
 			case 1:
 				cout << "single\t\t";
@@ -189,7 +201,7 @@ void Hotel::allocate()
 			default:
 				cout << "4 people\t\t";
 				break;
-			}*/
+			}
 			cout << hour << "\t\t" << price << " VND\n";
 
 			cout << endl;

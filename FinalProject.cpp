@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <conio.h>
 #include "hotel.h"
 using namespace std;
 
@@ -50,7 +51,8 @@ int main()
         case 6:
             break;
         default:
-            cout << "Invalid input! Please choose your option again." << endl;
+            cout << "Invalid input! " << endl;
+            _getch();
             break;
         }
     }
