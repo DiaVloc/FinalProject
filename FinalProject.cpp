@@ -13,7 +13,7 @@ int main()
         system("cls");
         cout << "HOTEL ROOM BOOKING MANAGEMENT SYSTEM" << endl;
         cout << "Menu options:" << endl;
-        cout << "1. Check-In" << endl;
+        cout << "1. Book a new room" << endl;
         cout << "2. Customer records" << endl;
         cout << "3. Rooms allocated" << endl;
         cout << "4. Modify record" << endl;

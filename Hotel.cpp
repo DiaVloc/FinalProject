@@ -23,7 +23,7 @@ void Hotel::checkin()
 	system("cls");
 	int r, booking;
 	ofstream A("Hotel.txt", ios::app);
-	cout << "Choose type of room: " << endl;
+	/*cout << "Choose type of room: " << endl;
 	cout << "1. single" << endl << "2. double" << endl << "3. 4 people" << endl;
 	cout << "Enter option: ";
 	cin >> roomtype;
@@ -32,9 +32,9 @@ void Hotel::checkin()
 		cout << "Invalid input" << endl;
 		cout << "Enter option: ";
 		cin >> roomtype;
-	}
-	cout << "INFORMATION" << endl;
-	if (roomtype == 1)
+	}*/
+	cout << "INFORMATION" << endl << endl;
+	/*if (roomtype == 1)
 	{
 		cout << "Room type: Single" << endl;
 	}
@@ -46,9 +46,12 @@ void Hotel::checkin()
 	{
 		cout << "Room type: 4 people" << endl;
 	}
-	
+	*/
 	cout << "List of rooms: " << endl;
-	switch (roomtype)
+	cout << "Single rooms: 1 - 20" << endl;
+	cout << "Double rooms: 21 - 40" << endl;
+	cout << "4 people rooms: 41 - 60" << endl;
+	/*switch (roomtype)
 	{
 	case 1:
 		cout << "single: 1 - 20" << endl;
@@ -59,10 +62,10 @@ void Hotel::checkin()
 	default:
 		cout << "4 people: 41 - 60 " << endl;
 		break;
-	}
+	}*/
 	cout << "Room number: ";
 	cin >> r;
-	//booking = check(r);
+	
 	while (check(r) == 1)
 	{
 		cout << "Sorry, room has been booked." << endl;
@@ -70,12 +73,7 @@ void Hotel::checkin()
 		cout << "Room number: ";
 		cin >> r;
 	}
-	/*if (booking)
-	{
-		cout << "This room has been booked. Please choose another room." << endl;
-	}
-	else
-	{*/
+	
 	roomnum = r;
 	cout << "Full Name: ";
 	cin.ignore();
@@ -96,7 +94,7 @@ void Hotel::checkin()
 	cout << "Press any key to continue" << endl << endl;
 	_getch();
 	A.close();
-	//}
+	
 }
 
 
@@ -109,8 +107,8 @@ void Hotel::print()
 	cout << "ID number: " << id << endl;
 	cout << "Phone number: " << phonenum << endl;
 	cout << "Date: " << date << endl;
-	cout << "Room type: ";
-	switch (roomtype)
+	//cout << "Room type: ";
+	/*switch (roomtype)
 	{
 	case 1:
 		cout << "single " << endl;
@@ -121,7 +119,7 @@ void Hotel::print()
 	default:
 		cout << "4 people " << endl;
 		break;
-	}	
+	}	*/
 	
 	cout << "Hours: " << hour << endl;
 	cout << "Price: " << price << " VND" << endl << endl;
@@ -173,14 +171,14 @@ void Hotel::allocate()
 	system("cls");
 	ifstream B("Hotel.txt", ios::in);
 	cout << "List of rooms allocated:" << endl;
-	cout << "Room no.\tName\t\tID number\tPhone number\tDate\t\tRoom type\tHours\tPrice\n\n";
+	cout << "Room no.\tName\t\tID number\tPhone number\tDate\t\tHours\tPrice\n\n";
 	
 	while (!B.eof()) {
 		
 			B.read((char*)this, sizeof(Hotel));
 
 			cout << roomnum << "\t\t" << name << "\t\t" << id << "\t\t" << phonenum << "\t\t" << date << "\t\t";
-			switch (roomtype)
+			/*switch (roomtype)
 			{
 			case 1:
 				cout << "single\t\t";
@@ -191,8 +189,8 @@ void Hotel::allocate()
 			default:
 				cout << "4 people\t\t";
 				break;
-			}
-			cout << hour << "\t" << price << " VND\n";
+			}*/
+			cout << hour << "\t\t" << price << " VND\n";
 
 			cout << endl;
 			B.peek();
