@@ -48,9 +48,9 @@ void Hotel::checkin()
 	}
 	*/
 	cout << "List of rooms: " << endl;
-	cout << "Single rooms: 1 - 20" << endl;
-	cout << "Double rooms: 21 - 40" << endl;
-	cout << "4 people rooms: 41 - 60" << endl;
+	cout << "Standard rooms: 1 - 20" << endl;
+	cout << "Deluxe rooms: 21 - 40" << endl;
+	cout << "Royal rooms: 41 - 60" << endl;
 	/*switch (roomtype)
 	{
 	case 1:
@@ -63,12 +63,12 @@ void Hotel::checkin()
 		cout << "4 people: 41 - 60 " << endl;
 		break;
 	}*/
-	cout << "Room number: ";
+	cout << "\nRoom number: ";
 	cin >> r;
 	
 	while ((r > 60) || (r < 1))
 	{
-		cout << "Invalid input" << endl;
+		cout << "The entered room number is not correct, please try again!" << endl;
 		cout << "Room number: ";
 		cin >> r;
 	}
@@ -94,11 +94,62 @@ void Hotel::checkin()
 	cin >> id;
 	cout << "Phone number: ";
 	cin >> phonenum;
-	cout << "Date: ";
+	cout << "Date (dd/mm/yyyy): ";
 	cin.ignore();
 	getline(std::cin, date);
-	cout << "Rent hours: ";
-	cin >> hour;
+	cout << "\nChoose your time booking for using rooms: " << endl;
+	cout << "1. Less than 10 Hours [1 -> 9 hours]" << endl;
+	cout << "2. Half of a day: 12 hours " << endl;
+	cout << "3. One day: 24 hours" << endl;
+	cout << "4. More than a day" << endl;
+	int option;
+	cout << "\nEnter your option:"; cin >> option;
+	while ((option > 4) || (option < 0)) {
+		cout << "The entered hours is not correct, please try again!" << endl;
+		cout << "Enter your option: "; cin >> option;
+	}
+	switch (option) {
+	case 1:
+		
+	there:
+		
+		cout << "Enter the hours using room: ";
+		cin >> hour;
+		cout << endl;
+		if (hour > 9) {
+			cout << "The entered hours is not correct, please try again!" << endl;
+			goto there;
+		}
+		else
+			break;
+
+	case 2:
+		hour = 12;
+		break;
+
+	case 3:
+		hour = 24;
+		break;
+
+	case 4:
+		
+		int day;
+		char xx;
+		cout << "Enter days you want to use the room: ";
+		cin >> day;
+		cout << "Do you want to stay more in 12 hours!" << endl;
+		cout << "Yes[y] or No[n]: "; cin >> xx;
+		if (xx == 'y') {
+			hour = 24 * day + 12;
+			cout << hour << endl;
+		}
+		else {
+			hour = 24 * day;
+			cout << hour << endl;
+		}
+		
+		break;
+	}
 	pricecalc();
 	A.write((char*)this, sizeof(Hotel));
 	cout << endl;
@@ -118,18 +169,18 @@ void Hotel::print()
 	cout << "Name: " << name << endl;
 	cout << "ID number: " << id << endl;
 	cout << "Phone number: " << phonenum << endl;
-	cout << "Date: " << date << endl;
+	cout << "Date (dd/mm/yyyy): " << date << endl;
 	cout << "Room type: ";
 	switch (roomtype)
 	{
 	case 1:
-		cout << "single " << endl;
+		cout << "Standard " << endl;
 		break;
 	case 2:
-		cout << "double " << endl;
+		cout << "Deluxe " << endl;
 		break;
 	default:
-		cout << "4 people " << endl;
+		cout << "Royal " << endl;
 		break;
 	}	
 	
@@ -140,12 +191,45 @@ void Hotel::print()
 
 void Hotel::pricecalc() 
 {
-	if (hour <= 24)
-		price = hour * 250000;
-	else if (hour <= 48)
-		price = 24 * 250000 + (hour - 24) * 200000;
-	else
-		price = 24 * 250000 + 24 * 200000 + (hour - 48) * 175000;
+	if (roomtype == 1) {
+		if (hour <= 9)
+			price = hour * 100000;
+		else if (hour == 12)
+			price = hour * 80000;
+		else if (hour == 24)
+			price = hour * 60000;
+		else if (hour >= 24 && hour % 24 == 12)
+			price = (hour - 12) * 60000 + 12 * 80000;
+		else
+			price = hour * 60000;
+		
+	}
+	else if (roomtype == 2) {
+		if (hour <= 9)
+			price = hour * 200000;
+		else if (hour == 12)
+			price = hour * 160000;
+		else if (hour == 24)
+			price = hour * 145000;
+		else if (hour >= 24 && hour % 24 == 12)
+			price = (hour - 12) * 145000 + 12 * 160000;
+		else
+			price = hour * 145000;
+		
+	}
+	else {
+		if (hour <= 9)
+			price = hour * 300000;
+		else if (hour == 12)
+			price = hour * 250000;
+		else if (hour == 24)
+			price = hour * 200000;
+		else if (hour >= 24 && hour % 24 == 12)
+			price = (hour - 12) * 200000 + 12 * 250000;
+		else
+			price = hour * 200000;
+		
+	}
 }
 
 
@@ -193,13 +277,13 @@ void Hotel::allocate()
 			switch (roomtype)
 			{
 			case 1:
-				cout << "single\t\t";
+				cout << "Standard\t\t";
 				break;
 			case 2:
-				cout << "double\t\t";
+				cout << "Deluxe\t\t";
 				break;
 			default:
-				cout << "4 people\t\t";
+				cout << "Royal\t\t";
 				break;
 			}
 			cout << hour << "\t\t" << price << " VND\n";
